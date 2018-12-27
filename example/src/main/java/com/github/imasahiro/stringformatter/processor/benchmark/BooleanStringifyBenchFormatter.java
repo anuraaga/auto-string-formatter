@@ -20,7 +20,7 @@ import com.github.imasahiro.stringformatter.annotation.AutoStringFormatter;
 import com.github.imasahiro.stringformatter.annotation.Format;
 
 /**
- * Definition of formatter for benchmarking integer to string.
+ * Definition of formatter for benchmarking boolean to string.
  */
 public final class BooleanStringifyBenchFormatter {
     public static final String FORMAT = "%s %s %s %s";
