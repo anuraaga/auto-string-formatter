@@ -1,0 +1,12 @@
+// Tests to verify compatibility of generated formatters vs String.format
+
+apply plugin: 'net.ltgt.apt-idea'
+apply plugin: 'net.ltgt.apt-eclipse'
+
+dependencies {
+    testAnnotationProcessor project(':processor')
+    testCompile project(':runtime')
+
+    testCompileOnly 'javax.inject:javax.inject'
+    testCompile 'org.assertj:assertj-core'
+}

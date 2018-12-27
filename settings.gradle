@@ -8,3 +8,4 @@ includeWithFlags ':runtime',   'java'
 
 // Unpublished Java projects
 includeWithFlags ':example', 'java'
+includeWithFlags ':integration-tests', 'java'
