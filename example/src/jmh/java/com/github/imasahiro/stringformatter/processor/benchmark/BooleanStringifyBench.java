@@ -16,8 +16,7 @@
 
 package com.github.imasahiro.stringformatter.processor.benchmark;
 
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Supplier;
+import java.util.Random;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
@@ -30,14 +29,15 @@ public class BooleanStringifyBench {
         return String.format(formatString, a, b, c, d);
     }
 
+    private static final Random RANDOM = new Random();
+
     @Benchmark
     public void javaStringFormat(Blackhole blackhole) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
         blackhole.consume(javaStringFormat(BooleanStringifyBenchFormatter.FORMAT,
-                                           random.nextBoolean(),
-                                           random.nextBoolean(),
-                                           random.nextBoolean(),
-                                           random.nextBoolean()));
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean()));
     }
 
     private static String javaStringConcat(boolean a, boolean b, boolean c, boolean d) {
@@ -54,11 +54,10 @@ public class BooleanStringifyBench {
 
     @Benchmark
     public void javaStringConcat(Blackhole blackhole) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        blackhole.consume(javaStringConcat(random.nextBoolean(),
-                                           random.nextBoolean(),
-                                           random.nextBoolean(),
-                                           random.nextBoolean()));
+        blackhole.consume(javaStringConcat(RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean()));
     }
 
     private static String stringBuilder(boolean a, boolean b, boolean c, boolean d) {
@@ -75,19 +74,17 @@ public class BooleanStringifyBench {
 
     @Benchmark
     public void stringBuilder(Blackhole blackhole) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        blackhole.consume(stringBuilder(random.nextBoolean(),
-                                        random.nextBoolean(),
-                                        random.nextBoolean(),
-                                        random.nextBoolean()));
+        blackhole.consume(stringBuilder(RANDOM.nextBoolean(),
+                                        RANDOM.nextBoolean(),
+                                        RANDOM.nextBoolean(),
+                                        RANDOM.nextBoolean()));
     }
 
     @Benchmark
     public void autoStringFormatter(Blackhole blackhole) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        blackhole.consume(formatter.format(random.nextBoolean(),
-                                           random.nextBoolean(),
-                                           random.nextBoolean(),
-                                           random.nextBoolean()));
+        blackhole.consume(formatter.format(RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean(),
+                                           RANDOM.nextBoolean()));
     }
 }
