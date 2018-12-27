@@ -41,15 +41,7 @@ public class IntegerStringifyBench {
     }
 
     private static String javaStringConcat(int a, int b, int c, int d) {
-        String s = "";
-        s += a;
-        s += " + ";
-        s += b;
-        s += " * ";
-        s += c;
-        s += " = ";
-        s += d;
-        return s;
+        return a + " + " + b + " * " + c + " = " + d;
     }
 
     @Benchmark

@@ -41,15 +41,7 @@ public class BooleanStringifyBench {
     }
 
     private static String javaStringConcat(boolean a, boolean b, boolean c, boolean d) {
-        String s = "";
-        s += a;
-        s += " + ";
-        s += b;
-        s += " * ";
-        s += c;
-        s += " = ";
-        s += d;
-        return s;
+        return a + " " + b + " " + c + " " + d;
     }
 
     @Benchmark
@@ -63,11 +55,11 @@ public class BooleanStringifyBench {
     private static String stringBuilder(boolean a, boolean b, boolean c, boolean d) {
         return new StringBuilder()
                 .append(a)
-                .append(" + ")
+                .append(' ')
                 .append(b)
-                .append(" * ")
+                .append(' ')
                 .append(c)
-                .append(" = ")
+                .append(' ')
                 .append(d)
                 .toString();
     }
